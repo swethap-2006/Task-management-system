@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="alerts" role="status" aria-live="assertive"></div>
+  <canvas id="confetti"></canvas>
+
+  <div class="app">
+    <header>
+      <h1>My Task Manager</h1>
+      <p id="today"></p>
+      <label>Alert me if I have not added a task by <input id="nudgeTime" type="time" value="09:00"></label>
+      <div id="status"></div>
+    </header>
+
+    <aside class="card">
+      <form id="form">
+        <label>Title
+          <input id="title" required maxlength="150" placeholder="e.g. Digital logic exam">
+        </label>
+        <label>Type
+          <select id="category">
+            <option value="task">Daily task</option>
+            <option value="exam">Exam reminder</option>
+          </select>
+        </label>
+        <label>Due date <input id="due" type="date"></label>
+        <label>Remind me at <input id="remind" type="datetime-local"></label>
+        <label>Priority
+          <select id="prio">
+            <option value="high">High</option>
+            <option value="medium" selected>Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </label>
+        <button class="primary" type="submit">Add</button>
+      </form>
+      <p id="error" class="error" hidden></p>
+    </aside>
+
+    <main class="card">
+      <div class="stats">
+        <div class="stat"><b id="nAll">0</b><span>Total</span></div>
+        <div class="stat"><b id="nActive">0</b><span>Pending</span></div>
+        <div class="stat"><b id="nDone">0</b><span>Done</span></div>
+      </div>
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button data-f="all" aria-pressed="true">All</button>
+        <button data-f="pending" aria-pressed="false">Pending</button>
+        <button data-f="done" aria-pressed="false">Done</button>
+        <button data-f="exam" aria-pressed="false">Exams</button>
+      </div>
+      <ul id="list"></ul>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
